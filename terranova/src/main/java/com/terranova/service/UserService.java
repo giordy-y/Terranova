@@ -35,29 +35,29 @@ public class UserService implements ICrudService<User,Long> {
     }
 
     @Override
-    public User create(User model) {
+    public User create(User user) {
         logger.debug(
                 "The method create has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
-                model);
-        return repository.save(model);
+                user);
+        return repository.save(user);
     }
 
     @Override
-    public User update(User model) {
+    public User update(User user) {
         logger.debug(
                 "The method update has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
-                model);
-        return repository.save(model);
+                user);
+        return repository.save(user);
     }
 
     @Override
-    public void delete(User model) {
+    public void delete(Long id) {
         logger.debug(
                 "The method delete has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
-                model);
-        repository.delete(model);
+                id);
+        repository.deleteById(id);
     }
 }
