@@ -1,5 +1,7 @@
 package com.terranova.service;
 
+import com.terranova.exception.UserNotFoundException;
+import com.terranova.model.dto.UserDto;
 import com.terranova.model.entity.User;
 import com.terranova.model.mapper.UserMapper;
 import com.terranova.repository.UserRepository;
@@ -44,12 +46,18 @@ public class UserService implements ICrudService<User,Long> {
     }
 
     @Override
-    public User update(User user) {
-        logger.debug(
-                "The method update has been invoked for the table {}, with parameter model = {}",
+    public User update(Long id, User user) {
+        logger.debug("The method delete has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
-                user);
-        return repository.save(user);
+                id);
+        return repository.findById(id).map(userTrovato->{
+            userTrovato.setNome(user.getNome());
+            userTrovato.setCognome(user.getCognome());
+            userTrovato.setMail(user.getMail());
+            return repository.save(userTrovato);
+        }).orElseThrow(
+                ()-> new UserNotFoundException("user non trovato con l'id fornito")
+        );
     }
 
     @Override

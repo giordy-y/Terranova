@@ -35,10 +35,10 @@ public class UserController {
         throws EsecuzioneErrataException{
         return ResponseEntity.ok(service.create(user));
     }
-    @PutMapping(path = "updateUser")
-    public ResponseEntity<User> updateUser(User user)
+    @PutMapping(path = "updateUse/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,User user)
         throws EsecuzioneErrataException {
-        return ResponseEntity.ok(service.update(user));
+        return ResponseEntity.ok(service.update(id, user));
     }
     @DeleteMapping(path = "deleteUser/{id}")
     public void deleteUser(@PathVariable Long id)
