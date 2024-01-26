@@ -28,12 +28,12 @@ public class UserService implements ICrudService<User,Long> {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public User findById(Long id) {
         logger.debug(
                 "The method findById has been invoked for the table {}, with parameter id = {}",
                 TABLE_NAME,
                 id);
-        return repository.findById(id);
+        return  repository.findById(id).orElseThrow(()->new UserNotFoundException("nussun user presente con questo id"));
     }
 
     @Override

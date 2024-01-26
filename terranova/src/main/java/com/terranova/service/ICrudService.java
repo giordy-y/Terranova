@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ICrudService<T, P> {
     List<T> findAll();
 
-    Optional<T> findById(P pk);
+    T findById(P pk);
 
     T create(T user);
 

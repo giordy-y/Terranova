@@ -25,8 +25,8 @@ public class UserController {
             throws EsecuzioneErrataException {
         return ResponseEntity.ok(service.findAll());
     }
-    @GetMapping(path = "byId")
-    public ResponseEntity<Optional<User>> getUserById(Long id)
+    @GetMapping(path = "byId/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id)
         throws EsecuzioneErrataException{
         return ResponseEntity.ok(service.findById(id));
     }
@@ -35,8 +35,8 @@ public class UserController {
         throws EsecuzioneErrataException{
         return ResponseEntity.ok(service.create(user));
     }
-    @PutMapping(path = "updateUse/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id,User user)
+    @PutMapping(path = "updateUser/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User user)
         throws EsecuzioneErrataException {
         return ResponseEntity.ok(service.update(id, user));
     }
