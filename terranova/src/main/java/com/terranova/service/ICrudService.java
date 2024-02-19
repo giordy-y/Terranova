@@ -14,9 +14,9 @@ public interface ICrudService<T, P> {
 
     T findById(P pk);
 
-    T create(T user);
+    T create(T t);
 
-    T update(P pk,T user);
+    T update(P pk,T t);
 
     void delete(P pk);
 }
