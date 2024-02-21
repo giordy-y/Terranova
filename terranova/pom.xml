@@ -15,6 +15,7 @@
 	<description>Demo project for terranova</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-security.version>6.2.2</spring-security.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,7 +26,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
@@ -41,6 +41,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 
 	</dependencies>
 

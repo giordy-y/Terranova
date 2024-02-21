@@ -63,7 +63,7 @@ public class AnagraficaService implements ICrudService<Anagrafica,Long> {
             AnagraficaTrovato.setEmail(anagrafica.getEmail());
             return repository.save(AnagraficaTrovato);
         }).orElseThrow(
-                ()-> new ContattoNotFoundException("Contatto non trovato con l'IDAnagrafica fornito")
+                ()-> new ContattoNotFoundException("Contatto non trovato con l'id fornito")
         );
     }
 

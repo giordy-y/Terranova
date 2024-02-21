@@ -49,6 +49,7 @@ public class SedeService implements ICrudService<Sede,Long> {
                 iDSede);
         return repository.findById(iDSede).map(SedeTrovato->{
             SedeTrovato.setIDAnagrafica(sede.getIDAnagrafica());
+            SedeTrovato.setDescrizione(sede.getDescrizione());
             SedeTrovato.setIndirizzo(sede.getIndirizzo());
             SedeTrovato.setCivico(sede.getCivico());
             SedeTrovato.setCAP(sede.getCAP());
@@ -57,7 +58,7 @@ public class SedeService implements ICrudService<Sede,Long> {
             SedeTrovato.setNazione(sede.getNazione());
             return repository.save(SedeTrovato);
         }).orElseThrow(
-                ()-> new ContattoNotFoundException("Contatto non trovato con l'IDAnagrafica fornito")
+                ()-> new ContattoNotFoundException("Contatto non trovato con l'id fornito")
         );
     }
 

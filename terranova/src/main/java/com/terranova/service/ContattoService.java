@@ -65,7 +65,7 @@ public class ContattoService implements ICrudService<Contatto,Long> {
             ContattoTrovato.setEmail(contatto.getEmail());
             return repository.save(ContattoTrovato);
         }).orElseThrow(
-                ()-> new ContattoNotFoundException("Contatto non trovato con l'IDAnagrafica fornito")
+                ()-> new ContattoNotFoundException("Contatto non trovato con l'id fornito")
         );
     }
 

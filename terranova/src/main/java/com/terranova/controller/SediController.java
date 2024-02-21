@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "/api/sedi")

@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class ContrattoService implements ICrudService<Contratto,Long>{
 
-    private static final String TABLE_NAME="Contatti";
+    private static final String TABLE_NAME="Contratti";
 
     protected static final Logger logger = LoggerFactory.getLogger(ContrattoService.class);
 
@@ -63,7 +63,7 @@ public class ContrattoService implements ICrudService<Contratto,Long>{
             ContrattoTrovato.setPotDisp(contratto.getPotDisp());
             return repository.save(ContrattoTrovato);
         }).orElseThrow(
-                ()-> new ContattoNotFoundException("Contatto non trovato con l'IDAnagrafica fornito")
+                ()-> new ContattoNotFoundException("Contatto non trovato con l'id fornito")
         );
     }
 
