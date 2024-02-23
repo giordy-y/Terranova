@@ -17,7 +17,7 @@ public class ContrattoMapper implements  IDtoEntityBidirectionalMapper<Contratto
     public ContrattoDto toDto(Contratto contratto) {
         return new ContrattoDto(
                 contratto.getIDRigaContratto(),
-                contratto.getIDSede(),
+                contratto.getSede(),
                 contratto.getDatatRichiestaServizio(),
                 contratto.getDataInizioValidita(),
                 contratto.getDataFineValidita(),
@@ -26,7 +26,13 @@ public class ContrattoMapper implements  IDtoEntityBidirectionalMapper<Contratto
                 contratto.getStatoContratto(),
                 contratto.getTipoPagamento(),
                 contratto.getPotenzaImp(),
-                contratto.getPotDisp()
+                contratto.getPotDisp(),
+                contratto.getEnergiaAnno(),
+                contratto.getGasAnno(),
+                contratto.getUsoCotturaCibi(),
+                contratto.getProduzioneAcquaCaldaSanitaria(),
+                contratto.getRiscaldamentoIndividuale(),
+                contratto.getUsoCommerciale()
         );
     }
 
@@ -39,7 +45,7 @@ public class ContrattoMapper implements  IDtoEntityBidirectionalMapper<Contratto
     public Contratto toEntity(ContrattoDto dto) {
         return new Contratto(
                 dto.getIDRigaContratto(),
-                dto.getIDSede(),
+                dto.getSede(),
                 dto.getDatatRichiestaServizio(),
                 dto.getDataInizioValidita(),
                 dto.getDataFineValidita(),
@@ -48,7 +54,13 @@ public class ContrattoMapper implements  IDtoEntityBidirectionalMapper<Contratto
                 dto.getStatoContratto(),
                 dto.getTipoPagamento(),
                 dto.getPotenzaImp(),
-                dto.getPotDisp()
+                dto.getPotDisp(),
+                dto.getEnergiaAnno(),
+                dto.getGasAnno(),
+                dto.getUsoCotturaCibi(),
+                dto.getProduzioneAcquaCaldaSanitaria(),
+                dto.getRiscaldamentoIndividuale(),
+                dto.getUsoCommerciale()
         );
 
     }

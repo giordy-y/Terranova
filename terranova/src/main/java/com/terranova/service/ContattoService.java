@@ -49,7 +49,7 @@ public class ContattoService implements ICrudService<Contatto,Long> {
                 TABLE_NAME,
                 iDContatto);
         return repository.findById(iDContatto).map(ContattoTrovato->{
-            ContattoTrovato.setIDAnagrafica(contatto.getIDAnagrafica());
+            ContattoTrovato.setAnagrafica(contatto.getAnagrafica());
             ContattoTrovato.setNome(contatto.getNome());
             ContattoTrovato.setCognome(contatto.getCognome());
             ContattoTrovato.setRagSoc(contatto.getRagSoc());

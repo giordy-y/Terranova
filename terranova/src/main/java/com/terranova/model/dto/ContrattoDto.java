@@ -1,5 +1,6 @@
 package com.terranova.model.dto;
 
+import com.terranova.model.entity.Sede;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 public class ContrattoDto {
     private Long iDRigaContratto;
-    private Long iDSede;
+    private Sede sede;
     private LocalDateTime datatRichiestaServizio;
     private LocalDateTime dataInizioValidita;
     private LocalDateTime dataFineValidita;
@@ -21,4 +22,10 @@ public class ContrattoDto {
     private String tipoPagamento;
     private Float potenzaImp;
     private Long potDisp;
+    private Long energiaAnno;
+    private Long gasAnno;
+    private Long usoCotturaCibi;
+    private Long produzioneAcquaCaldaSanitaria;
+    private Long riscaldamentoIndividuale;
+    private Long usoCommerciale;
 }

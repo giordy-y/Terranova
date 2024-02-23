@@ -19,8 +19,9 @@ public class Contratto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iDRigaContratto;
 
-    @Column(name = "iDSede")
-    private Long iDSede;
+    @ManyToOne
+    @JoinColumn(name = "iDSede")
+    private Sede sede;
 
     @Column(name = "datatRichiestaServizio")
     private LocalDateTime datatRichiestaServizio;
@@ -48,5 +49,24 @@ public class Contratto {
 
     @Column(name = "potDisp")
     private Long potDisp;
+
+    @Column(name = "energiaAnno")
+    private Long energiaAnno;
+
+    @Column(name = "gasAnno")
+    private Long gasAnno;
+
+    @Column(name = "usoCotturaCibi")
+    private Long usoCotturaCibi;
+
+    @Column(name = "produzioneAcquaCaldaSanitaria")
+    private Long produzioneAcquaCaldaSanitaria;
+
+    @Column(name = "riscaldamentoIndividuale")
+    private Long riscaldamentoIndividuale;
+
+    @Column(name = "usoCommerciale")
+    private Long usoCommerciale;
+
 }
 

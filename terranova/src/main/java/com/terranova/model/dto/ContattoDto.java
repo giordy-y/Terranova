@@ -1,5 +1,6 @@
 package com.terranova.model.dto;
 
+import com.terranova.model.entity.Anagrafica;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ContattoDto {
     private Long iDContatto;
-    private Long iDAnagrafica;
+    private Anagrafica anagrafica;
     private String cognome;
     private String nome;
     private String ragSoc;

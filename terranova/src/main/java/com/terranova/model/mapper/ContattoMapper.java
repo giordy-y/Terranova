@@ -13,7 +13,7 @@ public class ContattoMapper implements IDtoEntityBidirectionalMapper<ContattoDto
     public ContattoDto toDto(Contatto Contatto) {
         return new ContattoDto(
                 Contatto.getIDContatto(),
-                Contatto.getIDAnagrafica(),
+                Contatto.getAnagrafica(),
                 Contatto.getNome(),
                 Contatto.getCognome(),
                 Contatto.getRagSoc(),
@@ -41,7 +41,7 @@ public class ContattoMapper implements IDtoEntityBidirectionalMapper<ContattoDto
     public Contatto toEntity(ContattoDto ContattoDto) {
         return new Contatto(
                 ContattoDto.getIDContatto(),
-                ContattoDto.getIDAnagrafica(),
+                ContattoDto.getAnagrafica(),
                 ContattoDto.getNome(),
                 ContattoDto.getCognome(),
                 ContattoDto.getRagSoc(),

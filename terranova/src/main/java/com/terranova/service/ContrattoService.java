@@ -52,6 +52,7 @@ public class ContrattoService implements ICrudService<Contratto,Long>{
                 TABLE_NAME,
                 iDConrtatto);
         return repository.findById(iDConrtatto).map(ContrattoTrovato->{
+            ContrattoTrovato.setSede(contratto.getSede());
             ContrattoTrovato.setDatatRichiestaServizio(contratto.getDatatRichiestaServizio());
             ContrattoTrovato.setDataInizioValidita(contratto.getDataInizioValidita());
             ContrattoTrovato.setDataFineValidita(contratto.getDataFineValidita());

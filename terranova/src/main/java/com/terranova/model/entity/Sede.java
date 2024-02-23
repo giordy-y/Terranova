@@ -17,8 +17,9 @@ public class Sede {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iDSede;
 
-    @Column(name = "iDAnagrafica")
-    private Long iDAnagrafica;
+    @ManyToOne
+    @JoinColumn(name = "iDAnagrafica")
+    private Anagrafica anagrafica;
 
     @Column(name = "descrizione")
     private String descrizione;

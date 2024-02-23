@@ -14,8 +14,9 @@ public class Contatto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iDContatto;
-    @Column(name = "iDAnagrafica")
-    private Long iDAnagrafica;
+    @ManyToOne
+    @JoinColumn(name = "iDAnagrafica")
+    private Anagrafica anagrafica;
     @Column(name = "nome")
     private String nome;
     @Column(name = "coognome")

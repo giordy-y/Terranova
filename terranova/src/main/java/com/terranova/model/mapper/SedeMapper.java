@@ -15,7 +15,7 @@ public class SedeMapper implements IDtoEntityBidirectionalMapper<SedeDto, Sede>{
     public SedeDto toDto(Sede sede) {
         return new SedeDto(
                 sede.getIDSede(),
-                sede.getIDAnagrafica(),
+                sede.getAnagrafica(),
                 sede.getDescrizione(),
                 sede.getIndirizzo(),
                 sede.getCivico(),
@@ -35,7 +35,7 @@ public class SedeMapper implements IDtoEntityBidirectionalMapper<SedeDto, Sede>{
     public Sede toEntity(SedeDto dto) {
         return new Sede(
                 dto.getIDSede(),
-                dto.getIDAnagrafica(),
+                dto.getAnagrafica(),
                 dto.getDescrizione(),
                 dto.getIndirizzo(),
                 dto.getCivico(),

@@ -1,5 +1,7 @@
 package com.terranova.service;
 
+import com.terranova.exception.ForeignKeyException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,9 +16,9 @@ public interface ICrudService<T, P> {
 
     T findById(P pk);
 
-    T create(T t);
+    T create(T t) throws ForeignKeyException;
 
-    T update(P pk,T t);
+    T update(P pk,T t) throws ForeignKeyException;
 
     void delete(P pk);
 }

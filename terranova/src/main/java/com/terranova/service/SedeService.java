@@ -1,14 +1,21 @@
 package com.terranova.service;
 
 import com.terranova.exception.ContattoNotFoundException;
+import com.terranova.exception.EsecuzioneErrataException;
+import com.terranova.exception.ForeignKeyException;
+import com.terranova.model.entity.Anagrafica;
 import com.terranova.model.entity.Sede;
+import com.terranova.repository.AnagraficaRepository;
 import com.terranova.repository.SedeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class SedeService implements ICrudService<Sede,Long> {
@@ -17,6 +24,7 @@ public class SedeService implements ICrudService<Sede,Long> {
     protected static final Logger logger = LoggerFactory.getLogger(SedeService.class);
 
     @Autowired protected SedeRepository repository;
+    @Autowired protected AnagraficaRepository anagraficaRepository;
 
     @Override
     public List<Sede> findAll() {
@@ -34,21 +42,23 @@ public class SedeService implements ICrudService<Sede,Long> {
     }
 
     @Override
-    public Sede create(Sede sede) {
+    public Sede create(Sede sede) throws ForeignKeyException {
         logger.debug(
                 "The method create has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
                 sede);
+        if(!isVerificato(sede)) throw new ForeignKeyException("non esiste nessuna anagrafica che corrisponda a quella data");
         return repository.save(sede);
     }
 
     @Override
-    public Sede update(Long iDSede, Sede sede) {
+    public Sede update(Long iDSede, @RequestBody Sede sede) throws ForeignKeyException {
         logger.debug("The method delete has been invoked for the table {}, with parameter model = {}",
                 TABLE_NAME,
                 iDSede);
+        if(!isVerificato(sede)) throw new ForeignKeyException("non esiste nessuna anagrafica che corrisponda a quella data");
         return repository.findById(iDSede).map(SedeTrovato->{
-            SedeTrovato.setIDAnagrafica(sede.getIDAnagrafica());
+            SedeTrovato.setAnagrafica(sede.getAnagrafica());
             SedeTrovato.setDescrizione(sede.getDescrizione());
             SedeTrovato.setIndirizzo(sede.getIndirizzo());
             SedeTrovato.setCivico(sede.getCivico());
@@ -58,9 +68,22 @@ public class SedeService implements ICrudService<Sede,Long> {
             SedeTrovato.setNazione(sede.getNazione());
             return repository.save(SedeTrovato);
         }).orElseThrow(
-                ()-> new ContattoNotFoundException("Contatto non trovato con l'id fornito")
+                ()-> new ContattoNotFoundException("Sede non trovata con l'id fornito")
         );
     }
+
+    public boolean isVerificato(@RequestBody Sede sede) throws ForeignKeyException{
+        boolean verifica = false;
+        List<Anagrafica> listaAnagrafiche = anagraficaRepository.findAll();
+        for (Anagrafica anagrafica : listaAnagrafiche) {
+            if (anagrafica.equals(sede.getAnagrafica())) {
+                verifica = true;
+                break;
+            }
+        }
+        return verifica;
+    }
+
 
     @Override
     public void delete(Long iDSede) {
